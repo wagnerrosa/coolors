@@ -1,0 +1,26 @@
+<%= form_for @color do |f| %>
+	<% if @color.errors.any? %>
+	<h2><%= pluralize(@color.errors.count, "error") %> prevented this post from saving:</h2>
+	<ul>
+		<%= @color.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	<% end %>
+
+	<%= f.label :color1 %><br>
+	<%= f.text_field :color1 %>
+	<br>
+	<br>
+	<%= f.label :color2 %><br>
+	<%= f.text_field :color2 %>
+	<br>
+	<br>
+	<%= f.label :color3 %><br>
+	<%= f.text_field :color3 %>
+
+	<br>
+	<br>
+	<%= f.submit %>
+
+<% end %>

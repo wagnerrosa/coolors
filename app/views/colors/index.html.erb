@@ -1,0 +1,12 @@
+<h1>Hello World</h1>
+
+<div id="colors-wrapper" class="row">
+<% @colors.each do |color| %>
+	<div class="col-sm-6 col-md-2" >
+		
+		<div class="box" style="background-color: <%= color.color1 %>"></div>
+		<div class="box" style="background-color: <%= color.color2 %>"></div>
+		<div class="box" style="background-color: <%= color.color3 %>"></div>		
+	</div>
+<% end %>
+</div>
