@@ -1,3 +1,5 @@
+
+https://zenorocha.github.io/clipboard.js/
 == README
 
 This README would normally document whatever steps are necessary to get the

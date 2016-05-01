@@ -2,24 +2,30 @@
 <html>
 <head>
   <title>Coolors</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-<header class="header">header</header>
+	<div class="container">
 
-<main>
-	
-<%= yield %>
-</main>
+		<%= render 'layouts/header' %>
 		
-</footer>
-	<p>Footer</p>
-</footer>
+		<% if notice %>
+		   <p class="notice"><%= notice %></p>
+		<% elsif notice %>
+		   <p class="alert"><%= alert %></p>
+		<% end %>
 
-</div>
+
+		<main>
+			
+			<%= yield %>
+		</main>
+			
+		<%= render 'layouts/footer' %>
+
+	</div>
 </body>
 </html>

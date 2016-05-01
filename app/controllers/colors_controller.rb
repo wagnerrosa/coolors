@@ -1,5 +1,7 @@
 class ColorsController < ApplicationController
 	before_action :find_color, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, except: [:index, :show]
+	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
 
 	def index
 		@colors = Color.all.order("created_at desc")
@@ -47,5 +49,13 @@ class ColorsController < ApplicationController
 
 	def find_color
 		@color = Color.find(params[:id])		
+	end
+
+	def admin_user_logged?
+		if current_user.admin?
+			#faz nada
+		else
+			redirect_to root_path
+		end
 	end
 end
