@@ -1,6 +1,6 @@
 Todo:
 
-*Change sqlite to Pg (Heroku)
+*Change sqlite to Pg (Heroku)  
 *js: https://zenorocha.github.io/clipboard.js/
 
 --
