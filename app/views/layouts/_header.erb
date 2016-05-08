@@ -8,6 +8,9 @@
 	<nav>
 		<% if user_signed_in? %>
 		<%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "button signout" %>
+			<% if current_user.id === 2 %>
+				<span class="button admin-advice"><i class="icon ion-gear-a"></i>Admin Logged!</span>		
+			<% end %>
 		<% end %>
 		<%= link_to new_color_path, :class => "button" do %>
 			<i class="icon ion-plus-circled"></i>
