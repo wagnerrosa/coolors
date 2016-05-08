@@ -31,6 +31,16 @@ $preto-color: #485451
 	border-bottom-left-radius: $radius
 	background-clip: padding-box
 
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
+
 
 // Reset 
 body
@@ -58,3 +68,33 @@ body
 	left: -5px
 	top: -12px
 	font-size: 45px
+
+//advice
+.advice
+	position: fixed
+	left: 0
+	top: 0
+	z-index: 11
+	height: 50px
+	width: 100%
+	text-align: center
+	color: $preto-color
+	background-color: $verde-claro-color
+
+	-webkit-animation: seconds 1.0s forwards
+	-webkit-animation-iteration-count: 1
+	-webkit-animation-delay: 5s
+	animation: seconds 1.0s forwards
+	animation-iteration-count: 1
+	animation-delay: 5s
+
+	p
+		margin-top: 10px
+		text-transform: uppercase
+
++keyframes(seconds)
+	0%
+		opacity: 1  
+	100%
+		opacity: 0
+		left: -9999px

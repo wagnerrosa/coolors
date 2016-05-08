@@ -12,13 +12,13 @@
 <body>
 	<div class="container">
 
+		<% if notice %>
+		   <div class="advice"><p class="notice"><%= notice %></p></div>
+		<% elsif notice %>
+		   <div class="advice"><p class="alert"><%= alert %></p></div>
+		<% end %>
 		<%= render 'layouts/header' %>
 		
-		<% if notice %>
-		   <p class="notice"><%= notice %></p>
-		<% elsif notice %>
-		   <p class="alert"><%= alert %></p>
-		<% end %>
 
 
 		<main>
