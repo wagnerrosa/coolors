@@ -1,12 +1,14 @@
 <%# app/views/layouts/_header.erb %>
 
 <header class="header">
-	<nav>
-		<%= link_to(image_tag("path/to/image.png"), root_path) %>
-		<% if user_signed_in? %>
-			<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-		<% end %>
-		<%= link_to "Create a Coolors", new_color_path %>
-		
-	</nav>
+	<%= link_to(image_tag("path/to/image.png"), root_path) %>		
 </header>
+
+<div class="submenu">
+	<nav>
+		<% if user_signed_in? %>
+		<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+		<% end %>
+		<%= link_to "Create a Coolors", new_color_path, :class => "button" %>
+	</nav>
+</div>

@@ -7,3 +7,16 @@ $pink-color: #e52054
 	-webkit-border-radius: $radius
 	border-radius: $radius
 	background-clip: padding-box
+
+//buttons
+.button
+	color: white
+	text-decoration: none
+	padding: 3px 11px
+	@include border-radius(50px)
+	background-color: $pink-color
+	border: 2px solid $pink-color
+	float: right
+	&:hover
+		background-color: transparent
+		color: $pink-color	
