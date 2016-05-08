@@ -1,6 +1,14 @@
+//font
+@import url(https://fonts.googleapis.com/css?family=Catamaran:400,600,200)
+
+$google-font: 'Catamaran', sans-serif //600, 400, 200
+
 // vars
 $text-color: #333030
 $pink-color: #e52054
+$verde-color: #27B6BA
+$verde-escuro-color: #349B9F
+$verde-claro-color: #C5FF49
 
 //mixins
 @mixin border-radius($radius)
@@ -8,15 +16,44 @@ $pink-color: #e52054
 	border-radius: $radius
 	background-clip: padding-box
 
+@mixin border-top-radius($radius) 
+	-webkit-border-top-right-radius: $radius
+	border-top-right-radius: $radius
+	-webkit-border-top-left-radius: $radius
+	border-top-left-radius: $radius
+	background-clip: padding-box
+
+@mixin border-bottom-radius($radius)
+	-webkit-border-bottom-right-radius: $radius
+	border-bottom-right-radius: $radius
+	-webkit-border-bottom-left-radius: $radius
+	border-bottom-left-radius: $radius
+	background-clip: padding-box
+
+
+// Reset 
+body
+	font-family: 'Catamaran', sans-serif
+	font-weight: 400
+
+
+
 //buttons
 .button
 	color: white
 	text-decoration: none
 	padding: 3px 11px
 	@include border-radius(50px)
-	background-color: $pink-color
-	border: 2px solid $pink-color
-	float: right
-	&:hover
-		background-color: transparent
-		color: $pink-color	
+	font-weight: 600
+	font-size: 14px
+	&:hover	
+		text-decoration: none
+
+.left
+	float: left
+.icon
+	position: absolute
+	color: $verde-claro-color
+	left: -5px
+	top: -12px
+	font-size: 45px
