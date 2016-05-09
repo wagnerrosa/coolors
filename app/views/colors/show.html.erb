@@ -13,8 +13,10 @@
 
 	<% if user_signed_in? %>
 		<% if current_user.id === 2 %>
+		<div class="admin-area">
 			<%= link_to "Edit", edit_color_path(@color) %>
-			<%= link_to "Delete", color_path(@color), method: :delete, data: { confirm: "Are you sure you want to delete this cool color?"} %>
+			<%= link_to "Delete", color_path(@color), method: :delete, data: { confirm: "Are you sure you want to delete this cool color?"} %>			
+		</div>
 		<% end %>
 	<% end %>
 </div>	
