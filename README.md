@@ -1,36 +1,24 @@
 [![Code Climate](https://codeclimate.com/github/wagnerrosa/coolors/badges/gpa.svg)](https://codeclimate.com/github/wagnerrosa/coolors)
 
-Just a webapp inspired on [lolcolors](http://lolcolors.com) of Mackenzie Child. I built it to learn rails a little bit.
-
-You can check out the [live demo](https://coolorsonrails.herokuapp.com/).
+Just a webapp inspired on [lolcolors](http://lolcolors.com) of Mackenzie Child. I built it to learn rails a little bit. You can check out the [live demo](https://coolorsonrails.herokuapp.com/).
 
 --
 
-README
+* Ruby 2.2.3  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Rails 4.2.5  
 
-Things you may want to cover:
+* PostgreSQL  
 
-* Ruby version
+* Bootstrap 4  
 
-* System dependencies
+* Clipboard.js  
 
-* Configuration
+* Icons Ionicons  
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Heroku  
 
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Please feel free to copy, study, whatever you want.
