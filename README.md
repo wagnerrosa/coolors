@@ -1,8 +1,4 @@
-Todo:
-
-*Change sqlite to Pg (Heroku)  
-*js: https://zenorocha.github.io/clipboard.js/
-
+https://coolorsonrails.herokuapp.com/
 --
 
 README
