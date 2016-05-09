@@ -1,14 +1,21 @@
-<div class="col-sm-12" >
-	<button class="btn" data-clipboard-text="<%= @color.color1 %>" style="background-color: <%= @color.color1 %>"><%= @color.color1 %></button><br>
-	<button class="btn" data-clipboard-text="<%= @color.color2 %>" style="background-color: <%= @color.color2 %>"><%= @color.color2 %></button><br>
-	<button class="btn" data-clipboard-text="<%= @color.color3 %>" style="background-color: <%= @color.color3 %>"><%= @color.color3 %></button>	
-</div>
+<div id="colors-wrapper" class="row">
+	<div id="color-id-showpage-<%= @color.id %>" class="col-sm-12 show-page" >
+		<button class="btn" data-clipboard-text="<%= @color.color1 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color1 %>"></i></button><span><%= @color.color1 %></span><br>
+		<button class="btn" data-clipboard-text="<%= @color.color2 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color2 %>"></i></button><span><%= @color.color2 %></span><br>
+		<button class="btn" data-clipboard-text="<%= @color.color3 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color3 %>"></i></button><span><%= @color.color3 %></span><br>
 
-<% if user_signed_in? %>
-	<% if current_user.id === 2 %>
-		<%= link_to "Edit", edit_color_path(@color) %>
-		<%= link_to "Delete", color_path(@color), method: :delete, data: { confirm: "Are you sure you want to delete this cool color?"} %>
+		<ul class="list">
+			<li><a href="" class="likes"><i class="icon ion-heart"></i> 21</a></li>
+			<li><a href="https://www.facebook.com/sharer.php?u=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="share"><i class="icon ion-social-facebook"></i>Share</a></li>
+			<li><a href="https://twitter.com/intent/tweet?url=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="tweet"><i class="icon ion-social-twitter"></i>Tweet</a></li>
+		</ul>		
+	</div>
+
+	<% if user_signed_in? %>
+		<% if current_user.id === 2 %>
+			<%= link_to "Edit", edit_color_path(@color) %>
+			<%= link_to "Delete", color_path(@color), method: :delete, data: { confirm: "Are you sure you want to delete this cool color?"} %>
+		<% end %>
 	<% end %>
-<% end %>
-
+</div>	
 
