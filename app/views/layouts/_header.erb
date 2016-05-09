@@ -6,6 +6,7 @@
 
 <div class="submenu">
 	<nav>
+		<p class="instruction">Click on the drop to copy the Coolor!</p>
 		<% if user_signed_in? %>
 		<%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "button signout" %>
 			<% if current_user.id === 2 %>
