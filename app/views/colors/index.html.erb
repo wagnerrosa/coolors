@@ -1,9 +1,15 @@
 <div id="colors-wrapper" class="row">
 <% @colors.each do |color| %>
-	<div class="col-sm-6 col-md-2" >
+	<div id="color-<%= color.id %>" class="col-sm-12 col-md-4 col-lg-3 box-color">
 		<button class="btn" data-clipboard-text="<%= color.color1 %>" style="background-color: <%= color.color1 %>"><%= color.color1 %></button><br>
 		<button class="btn" data-clipboard-text="<%= color.color2 %>" style="background-color: <%= color.color2 %>"><%= color.color2 %></button><br>
-		<button class="btn" data-clipboard-text="<%= color.color3 %>" style="background-color: <%= color.color3 %>"><%= color.color3 %></button>	
+		<button class="btn" data-clipboard-text="<%= color.color3 %>" style="background-color: <%= color.color3 %>"><%= color.color3 %></button>
+
+		<ul class="list">
+			<li><a href="" class="likes"><i class="icon ion-heart"></i> 21</a></li>
+			<li><%= link_to 'Show Coolor', color, :class => "show" %></li>
+		</ul>
+		
 	</div>
 <% end %>
 </div>
