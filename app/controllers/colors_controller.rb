@@ -15,9 +15,9 @@ class ColorsController < ApplicationController
 		@color = Color.new color_params
 
 		if @color.save
-			redirect_to @color, notice: "Nice."
+			redirect_to @color, notice: "Nice Cool Color! It was successfully created"
 		else
-			render 'new', notice: "Oh no!"
+			render 'new', notice: "Oh no! Could you try again?"
 		end
 
 	end
@@ -38,7 +38,7 @@ class ColorsController < ApplicationController
 
 	def destroy
 		@color.destroy
-		redirect_to colors_path
+		redirect_to colors_path, notice: "Color deleted... You're right, that wasn't so cool!"
 	end
 
 	private
