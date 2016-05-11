@@ -1,4 +1,16 @@
 <div id="colors-wrapper" class="row">
+
+	<div class="menu-options">
+		<ul>
+			<li>
+				<%= link_to "latest", root_path, class: "latest active" %>
+			</li>
+			<li>
+				<%= link_to "trends", colors_trend_path, class: "trend" %>
+			</li>
+		</ul>
+	</div>
+
 <% @colors.each do |color| %>
 	<div id="color-<%= color.id %>" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 box-color">
 		<button class="btn" data-clipboard-text="<%= color.color1 %>" ><i class="ion-waterdrop color-drop" style="color: <%= color.color1 %>"></i></button><br>

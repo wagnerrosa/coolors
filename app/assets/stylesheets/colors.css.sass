@@ -66,7 +66,7 @@ header
             margin: 20px 0 0
 
 main
-    padding-top: 100px
+    padding-top: 80px
 
 .box-color, .show-page
     /*border: 1px solid black*/
@@ -133,7 +133,7 @@ main
                     color: white
             .icon
                 color: white
-                margin-right: 6px
+                    margin-right: 6px
                 &:hover
                     color: white
         .tweet
@@ -160,3 +160,28 @@ main
         &:hover
             text-decoration: none
             opacity: 0.8
+
+.menu-options
+    text-align: center
+    padding-bottom: 40px
+    ul
+        list-style-type: none
+        color: $cinza-color
+        font-size: 16px
+        font-weight: 500
+        .active
+            font-weight: 600
+            color: $rosa-color
+        li
+            display: inline-block
+            &:last-child
+                &:before
+                    content: "|"
+            a
+                color: $cinza-color
+                &:hover
+                    color: $rosa-color
+                    text-decoration: none
+                    font-weight: 600
+
+
