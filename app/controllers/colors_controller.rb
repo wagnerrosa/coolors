@@ -2,6 +2,7 @@ class ColorsController < ApplicationController
 	before_action :find_color, only: [:show, :edit, :update, :destroy, :vote_up]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
+	before_action :voteup_time, only: [:vote_up]
 
 	def index
 		@colors = Color.all.order("created_at desc")
@@ -42,11 +43,13 @@ class ColorsController < ApplicationController
 	end
 
 	def vote_up
-		begin
-			current_user.vote_for(@color)
-			redirect_to :back, notice: "Thanks for voting"
-		rescue ActiveRecord::RecordInvalid
-			render :nothing => true, :status => 404
+		if @color.update_attributes(:updated_at => DateTime.now)
+			begin
+				current_user.vote_for(@color)
+				redirect_to :back, notice: "Thanks for voting"
+			rescue ActiveRecord::RecordInvalid
+				render :nothing => true, :status => 404
+			end			
 		end
 	end
 
@@ -67,5 +70,12 @@ class ColorsController < ApplicationController
 		else
 			redirect_to root_path
 		end
+	end
+
+	def voteup_time
+		old_date = @color.updated_at_was
+		if old_date > (DateTime.now - 1.minutes)
+			redirect_to :back, notice: "You already voted!"
+		end	
 	end
 end
