@@ -1,6 +1,6 @@
 class ColorsController < ApplicationController
 	before_action :find_color, only: [:show, :edit, :update, :destroy, :vote_up]
-	before_action :authenticate_user!, except: [:index, :show, :trend]
+	before_action :authenticate_user!, except: [:index, :show, :trend, :vote_up]
 	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
 	before_action :voteup_time, only: [:vote_up]
 
@@ -43,6 +43,7 @@ class ColorsController < ApplicationController
 	end
 
 	def vote_up
+		@current_user = User.first
 		if @color.update_attributes(:updated_at => DateTime.now)
 			begin
 				current_user.vote_for(@color)
