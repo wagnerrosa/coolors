@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510235900) do
+ActiveRecord::Schema.define(version: 20160511001128) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "color1"
@@ -19,10 +19,7 @@ ActiveRecord::Schema.define(version: 20160510235900) do
     t.string   "color3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
-
-  add_index "colors", ["user_id"], name: "index_colors_on_user_id"
 
   create_table "upvotes", force: :cascade do |t|
     t.integer  "color_id"
