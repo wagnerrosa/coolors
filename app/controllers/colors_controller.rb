@@ -44,7 +44,7 @@ class ColorsController < ApplicationController
 	def vote_up
 		begin
 			current_user.vote_for(@color)
-			redirect_to @color, notice: "thank you for voting"
+			redirect_to :back, notice: "Thanks for voting"
 		rescue ActiveRecord::RecordInvalid
 			render :nothing => true, :status => 404
 		end

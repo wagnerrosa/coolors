@@ -6,7 +6,11 @@
 		<button class="btn" data-clipboard-text="<%= color.color3 %>" ><i class="ion-waterdrop color-drop" style="color: <%= color.color3 %>"></i></button><br>		
 
 		<ul class="list">
-			<li><a href="" class="likes"><i class="icon ion-heart"></i> 21</a></li>
+			<li>
+				<%= link_to vote_up_color_path(color), class: "likes" do %>
+					<i class="icon ion-heart"></i><%= color.votes_for %>
+				<% end %>				
+			</li>
 			<li><%= link_to 'Show Coolor', color, :class => "show" %></li>
 		</ul>
 		

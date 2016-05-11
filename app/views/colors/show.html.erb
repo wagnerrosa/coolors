@@ -5,13 +5,13 @@
 		<button class="btn" data-clipboard-text="<%= @color.color3 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color3 %>"></i></button><span><%= @color.color3 %></span><br>
 
 		<ul class="list">
-			<li><a href="" class="likes"><i class="icon ion-heart"></i> 21</a></li>
+			<li>
+				<%= link_to vote_up_color_path(@color), class: "likes" do %>
+					<i class="icon ion-heart"></i> <%= @color.votes_for %>
+				<% end %>				
+			</li>
 			<li><a href="https://www.facebook.com/sharer.php?u=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="share"><i class="icon ion-social-facebook"></i>Share</a></li>
 			<li><a href="https://twitter.com/intent/tweet?url=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="tweet"><i class="icon ion-social-twitter"></i>Tweet</a></li>
-			<li>
-				<%= link_to "Upvote", vote_up_color_path(@color), class: "likes" %>
-				<p><%= @color.votes_for %></p>
-			</li>
 		</ul>		
 	</div>
 
