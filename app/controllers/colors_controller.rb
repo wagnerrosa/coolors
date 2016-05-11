@@ -76,6 +76,8 @@ class ColorsController < ApplicationController
 		old_date = @color.updated_at_was
 		if old_date > (DateTime.now - 1.minutes)
 			redirect_to :back, notice: "You already voted!"
-		end	
+		end
+		rescue ActionController::RedirectBackError
+  		redirect_to root_path		
 	end
 end
