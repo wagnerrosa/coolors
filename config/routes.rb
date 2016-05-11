@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :colors do
   	member do
-  		put "like", to: "colors#upvote"
+  		put "upvote", to: "colors#upvote"
   	end
   end
   get 'colors/index'

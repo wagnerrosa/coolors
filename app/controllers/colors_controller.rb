@@ -43,7 +43,7 @@ class ColorsController < ApplicationController
 
 	def upvote
 		@color.upvote_by current_user
-		redirect_to :back		
+		redirect_to :back, notice: "Thanks for voting"
 	end
 
 	private
