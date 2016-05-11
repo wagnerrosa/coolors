@@ -1,12 +1,12 @@
 class ColorsController < ApplicationController
 	before_action :find_color, only: [:show, :edit, :update, :destroy, :vote_up]
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show, :trend]
 	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
 	before_action :voteup_time, only: [:vote_up]
 
 	def index
-		@colors = Color.all.order("created_at desc")
-	end
+		@colors = Color.all.order("created_at desc")		
+	end	
 
 	def new
 		@color = Color.new
@@ -52,6 +52,10 @@ class ColorsController < ApplicationController
 			end			
 		end
 	end
+
+	def trend
+		@colors = Color.plusminus_tally.order('plusminus_tally DESC')	
+	end	
 
 	private
 

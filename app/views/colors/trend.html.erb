@@ -1,0 +1,19 @@
+<div id="colors-wrapper" class="row">
+<% @colors.each do |color| %>
+	<div id="color-<%= color.id %>" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 box-color">
+		<button class="btn" data-clipboard-text="<%= color.color1 %>" ><i class="ion-waterdrop color-drop" style="color: <%= color.color1 %>"></i></button><br>
+		<button class="btn" data-clipboard-text="<%= color.color2 %>" ><i class="ion-waterdrop color-drop" style="color: <%= color.color2 %>"></i></button><br>
+		<button class="btn" data-clipboard-text="<%= color.color3 %>" ><i class="ion-waterdrop color-drop" style="color: <%= color.color3 %>"></i></button><br>		
+
+		<ul class="list">
+			<li>
+				<%= link_to vote_up_color_path(color), class: "likes" do %>
+					<i class="icon ion-heart"></i><%= color.votes_for %>
+				<% end %>				
+			</li>
+			<li><%= link_to 'Show Coolor', color, :class => "show" %></li>
+		</ul>
+		
+	</div>
+<% end %>
+</div>
