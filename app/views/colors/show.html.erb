@@ -8,6 +8,11 @@
 			<li><a href="" class="likes"><i class="icon ion-heart"></i> 21</a></li>
 			<li><a href="https://www.facebook.com/sharer.php?u=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="share"><i class="icon ion-social-facebook"></i>Share</a></li>
 			<li><a href="https://twitter.com/intent/tweet?url=http://coolorsonrails.herokuapp.com/colors/<%= @color.id %>" class="tweet"><i class="icon ion-social-twitter"></i>Tweet</a></li>
+			<li>
+				<%= link_to like_color_path(@color), method: :put %>
+				<p><%= @color.get_upvotes.size %></p>
+
+			</li>
 		</ul>		
 	</div>
 

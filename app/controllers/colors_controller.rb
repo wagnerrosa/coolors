@@ -1,5 +1,5 @@
 class ColorsController < ApplicationController
-	before_action :find_color, only: [:show, :edit, :update, :destroy]
+	before_action :find_color, only: [:show, :edit, :update, :destroy, :upvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
 
@@ -39,6 +39,11 @@ class ColorsController < ApplicationController
 	def destroy
 		@color.destroy
 		redirect_to colors_path, notice: "Color deleted... You're right, that wasn't so cool!"
+	end
+
+	def upvote
+		@color.upvote_by current_user
+		redirect_to :back		
 	end
 
 	private

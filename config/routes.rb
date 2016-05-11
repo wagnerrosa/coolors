@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :colors
+  resources :colors do
+  	member do
+  		put "like", to: "colors#upvote"
+  	end
+  end
   get 'colors/index'
   root 'colors#index'
 
