@@ -1,5 +1,5 @@
 class ColorsController < ApplicationController
-	before_action :find_color, only: [:show, :edit, :update, :destroy]
+	before_action :find_color, only: [:show, :edit, :update, :destroy, :vote_up]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
 
@@ -39,6 +39,15 @@ class ColorsController < ApplicationController
 	def destroy
 		@color.destroy
 		redirect_to colors_path, notice: "Color deleted... You're right, that wasn't so cool!"
+	end
+
+	def vote_up
+		begin
+			current_user.vote_for(@color)
+			redirect_to @color, notice: "Nice, thanks for voting"
+		rescue ActiveRecord::RecordInvalid
+			render :nothing => true, :status => 404
+		end
 	end
 
 	private
