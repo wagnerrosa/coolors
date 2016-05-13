@@ -1,9 +1,8 @@
 //font
 @import url(https://fonts.googleapis.com/css?family=Catamaran:400,600,200)
-@import url(https://fonts.googleapis.com/css?family=Monofett|Monoton)
+@import url(https://fonts.googleapis.com/css?family=Monoton)
 
 $google-font: 'Catamaran', sans-serif //600, 400, 200
-$google-font-2: 'Monofett', cursive
 $google-font-3: 'Monoton', cursive
 
 // vars
@@ -80,24 +79,25 @@ body
 	left: 0
 	top: 0
 	z-index: 11
-	height: 50px
+	height: 80px
+	padding: 28px 0
 	width: 100%
 	text-align: center
-	color: $preto-color
 	background-color: $verde-claro-color
 	font-weight: 600
 	font-size: 16px
-
+	text-transform: uppercase
+	color: white
 	-webkit-animation: seconds 1.0s forwards
 	-webkit-animation-iteration-count: 1
-	-webkit-animation-delay: 5s
+	-webkit-animation-delay: 2s
 	animation: seconds 1.0s forwards
 	animation-iteration-count: 1
-	animation-delay: 5s
-
-	p
-		margin-top: 10px
-		text-transform: uppercase
+	animation-delay: 2s
+	
+	p 
+		padding: 0
+		margin: 0
 
 +keyframes(seconds)
 	0%
