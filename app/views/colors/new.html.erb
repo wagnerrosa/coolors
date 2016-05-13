@@ -1,2 +1,36 @@
-<h1>New Color</h1><br>
-<%= render 'form' %>
+<div class="row">
+	<div class="forms">
+		
+		<h2>New Color</h2>
+		<div class="form-control new-color">
+			<%= form_for @color do |f| %>
+				<% if @color.errors.any? %>
+				<h2><%= pluralize(@color.errors.count, "error") %> prevented this post from saving:</h2>
+				<ul>
+					<%= @color.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+				<% end %>
+				<div class="field">
+				<%= f.label :color1 %><br>
+				<%= f.text_field :color1 %>
+					
+				</div>
+				<div class="field">
+				<%= f.label :color2 %><br>
+				<%= f.text_field :color2 %>
+					
+				</div>
+				<div class="field">
+				<%= f.label :color3 %><br>
+				<%= f.text_field :color3 %>
+				</div>
+				<div class="actions">
+				<%= f.submit :class => 'btn btn-primary btn-lg btn-block' %>
+				</div>
+
+			<% end %>
+		</div>
+	</div>
+</div>
