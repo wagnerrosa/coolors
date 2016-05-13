@@ -1,0 +1,131 @@
+header
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 10
+    height: 80px
+    padding: 19px 0
+    animation: header-animation 10s
+    -moz-animation: header-animation 10s infinite /* Firefox */
+    -webkit-animation: header-animation 10s infinite
+
+    a
+        display: block
+        text-align: center
+        margin: 0
+        text-decoration: none
+        font-family: $google-font-3
+        animation: logo-animation 10s
+        -moz-animation: logo-animation 10s infinite /* Firefox */
+        -webkit-animation: logo-animation 10s infinite        
+        &:hover
+            text-decoration: none
+
+        h1
+            margin: 0
+            padding: 0
+
+// animation -header
+@-moz-keyframes header-animation /* Firefox */
+    0%   
+        background: #27B6BA
+    25%  
+        background: #E95787
+    50%
+        background: #F17F42
+    75%
+        background: #E95787
+    100%
+        background: #27B6BA
+
+
+@-webkit-keyframes header-animation /* Safari and Chrome */
+    0%   
+        background: #27B6BA
+    25%  
+        background: #E95787
+    50%
+        background: #F17F42
+    75%
+        background: #E95787
+    100%
+        background: #27B6BA
+
+// animation -logo
+@-moz-keyframes logo-animation /* Firefox */
+    0%   
+        color: #C5FF49
+    25%  
+        color: #FFD068
+    50%
+        color: #FFEEE4
+    75%
+        color: #FFD068
+    100%
+        color: #C5FF49
+
+
+@-webkit-keyframes logo-animation /* Safari and Chrome */
+    0%   
+        color: #C5FF49
+    25%  
+        color: #FFD068
+    50%
+        color: #FFEEE4
+    75%
+        color: #FFD068
+    100%
+        color: #C5FF49
+
+
+
+.submenu
+    padding: 0
+    margin-top: 90px
+    width: 100%
+
+    nav
+        .button
+            float: right
+            margin-top: 10px
+            background-color: $verde-color
+            border: 2px solid $verde-color
+            position: relative
+            padding: 7px 15px 7px 40px
+
+            &:hover
+                color: $verde-color
+                background-color: transparent
+
+        .signout
+            background-color: transparent
+            margin-left: 10px
+            border-color: $verde-color
+            color: $verde-color
+            padding: 7px 15px
+
+            &:hover
+                color: white
+                background-color: $verde-color
+
+        .admin-advice
+            background-color: $verde-claro-color
+            border: none
+            float: left
+            color: $preto-color
+
+            .icon
+                color: $preto-color
+
+            &:hover
+                background-color: $verde-claro-color
+                color: $preto-color
+                opacity: 0.85
+        .instruction
+            float: left
+            max-width: 32%
+            font-weight: 600
+            font-size: 16px
+            color: $cinza-color
+            margin: 20px 0 0
