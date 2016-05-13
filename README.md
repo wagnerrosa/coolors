@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/wagnerrosa/coolors/badges/gpa.svg)](https://codeclimate.com/github/wagnerrosa/coolors)
 
-Just a webapp inspired on [lolcolors](http://lolcolors.com) of Mackenzie Child. I built it to learn rails a little bit. Everyone can log in and create new cool colors. There's an admin user who have access to the CRUD (user id 2).
+Just a webapp inspired on lolcolors of Mackenzie Child. I built it to learn rails a little bit. Everyone can log in and create new cool colors. There's an admin user who have access to the CRUD (just me to manage the trolls).
 
 You can check out the [live demo](http://coolors.wagnerrosa.com/).
 
