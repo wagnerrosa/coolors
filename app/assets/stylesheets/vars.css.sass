@@ -45,15 +45,23 @@ $rosa-color: #e95787
 	@keyframes #{$name}
 		@content
 
+@mixin transition($args...) 
+	-webkit-transition: $args
+	-moz-transition: $args
+	-ms-transition: $args
+	-o-transition: $args
+	transition: $args
+
 
 // Reset 
 body
 	font-family: 'Catamaran', sans-serif
 	font-weight: 400
 
-
-
 //buttons
+a
+	@include transition(.5s)
+
 .button
 	color: white
 	text-decoration: none
