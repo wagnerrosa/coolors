@@ -69,9 +69,7 @@ class ColorsController < ApplicationController
 	end
 
 	def admin_user_logged?
-		#if current_user.admin?
-		if current_user.id === 2 # adminn account Heroku
-			#faz nada
+		if current_user.admin?
 		else
 			redirect_to root_path
 		end
