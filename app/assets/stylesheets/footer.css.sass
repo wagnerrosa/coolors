@@ -1,7 +1,27 @@
 
 footer
-	.right
+	margin-bottom: 20px
+	.button-footer
 		float: right
+		a
+			padding: 7px 13px 7px 37px
+			position: relative
+			border: 2px solid grey
+			@include border-radius(50px)
+			color: grey
+			margin: 33.5px 0
+			&:hover
+				text-decoration: none
+				background-color: grey
+				color: white
+				.icon
+					color: white
+			.icon
+				font-size: 29px
+				top: 0
+				left: 6px
+				color: grey
+
 .lx
 	float: left
 	max-width: 350px
@@ -35,20 +55,25 @@ footer
 			&:hover
 				color: #dc6b6b						
 
+@media (max-width: 580px)
+	footer
+		.button-footer
+			float: none
+			a 
+				margin: 0 auto
+				width: 135.84px
+				display: block
+	.lx
+		float: none
+		display: block
+		margin: 0 auto
 
-@media (max-width: 591px) 
-	#footer
-
-		.elements-footer
-
-			.botao-footer
-				margin: 0
 
 @media (max-width: 578px) 
 
 	.lx
 		width: 100%
-		margin: 30px auto 0
+		margin: 30px auto
 
 
 @media (max-width: 369px) 
