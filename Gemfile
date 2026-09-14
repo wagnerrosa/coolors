@@ -59,3 +59,5 @@ group :development do
 end
 
 gem "devise", "~> 5.0"
+
+gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
