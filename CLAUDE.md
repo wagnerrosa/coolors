@@ -141,9 +141,24 @@ Verified so far: Dart Sass compiles the six 2016 stylesheets (10.4KB output, bot
 animations present), the app boots on Rails 8.1.3.1, all ported Ruby passes `ruby -c`, and the
 routes are correct (`vote_up` is POST, `trend_colors` is GET, no catch-all).
 
-**Not yet verified — needs a database.** No PostgreSQL runs locally and there is no Docker, so
-migrations, seeds, voting, and the trend ordering have never been executed. Run the plan's
-verification steps once `DATABASE_URL` points at Neon.
+Verified against Neon: migrations create the three tables, seeds produce the admin plus four
+palettes, and `test/integration/port_verification_test.rb` covers all three 2016 bugs —
+6 runs, 25 assertions, 0 failures.
+
+Two problems the port introduced and fixed along the way:
+
+- `json` 3.0 dropped the second argument from `JSON.parse`, which `ActiveSupport::JSON.decode`
+  still passes. Every request that read an encrypted session cookie returned 500, so all POSTs
+  failed, Devise's `sign_in` included. It is pinned to `~> 2.7`.
+- `button_to`'s block form takes `(options, html_options)`, so `class:` became a second
+  positional argument and broke rendering.
+
+## Running the test suite
+
+It needs a local PostgreSQL, which is deliberate: `dotenv` is development-only so that
+`DATABASE_URL` cannot reach the suite, and `test_helper` aborts if the connection points at
+neon.tech. Without a local server the suite fails to connect — which is the intended failure,
+because the alternative is writing to the database that serves the live site.
 
 **Not yet done:** the working directory is still `coolors-new/` and needs renaming to `coolors/`,
-and commit `91eb075` has not been pushed.
+and nothing has been pushed — `master` is 7 commits ahead of `origin`.

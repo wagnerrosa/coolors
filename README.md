@@ -49,6 +49,16 @@ Environment variables:
 
 Sign-ups are disabled by design — there is one admin account, seeded from those variables.
 
+## Tests
+
+```bash
+bin/rails test
+```
+
+The suite covers the three 2016 bugs described below. It requires a local PostgreSQL and
+refuses to run against Neon — `dotenv` is development-only and the helper aborts if the
+connection points at a Neon host, so a test run cannot touch the live site's data.
+
 ## Deployment
 
 Render free web service (`render.yaml` is checked in) plus Neon free Postgres.
