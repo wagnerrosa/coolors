@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<title>Coolors</title>
-	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
-	<%= stylesheet_link_tag 'application', 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %>
+  <head>
+    <title>Coolors</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-</head>
-<body>
-	<div class="container">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Catamaran:400,600,200" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Monoton" %>
+    <%= stylesheet_link_tag "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
 
-		<% if notice %>
-		   <div class="advice"><p class="notice"><%= notice %></p></div>
-		<% elsif notice %>
-		   <div class="advice"><p class="alert"><%= alert %></p></div>
-		<% end %>
-		<%= render 'layouts/header' %>
-		
+  <body>
+    <div class="container">
+      <% if notice %>
+        <div class="advice"><p class="notice"><%= notice %></p></div>
+      <% elsif alert %>
+        <div class="advice"><p class="alert"><%= alert %></p></div>
+      <% end %>
 
+      <%= render "layouts/header" %>
 
-		<main>
-			
-			<%= yield %>
-		</main>
-			
-		<%= render 'layouts/footer' %>
+      <main>
+        <%= yield %>
+      </main>
 
-	</div>
-</body>
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
 </html>

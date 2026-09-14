@@ -1,0 +1,113 @@
+//font
+
+$google-font: 'Catamaran', sans-serif //600, 400, 200
+$google-font-3: 'Monoton', cursive
+
+// vars
+$text-color: #333030
+$pink-color: #e52054
+$verde-color: #27B6BA
+$verde-escuro-color: #349B9F
+$verde-claro-color: #C5FF49
+$preto-color: #485451
+$cinza-color: #AAAFC6
+$rosa-color: #e95787
+
+//mixins
+@mixin border-radius($radius)
+	-webkit-border-radius: $radius
+	border-radius: $radius
+	background-clip: padding-box
+
+@mixin border-top-radius($radius) 
+	-webkit-border-top-right-radius: $radius
+	border-top-right-radius: $radius
+	-webkit-border-top-left-radius: $radius
+	border-top-left-radius: $radius
+	background-clip: padding-box
+
+@mixin border-bottom-radius($radius)
+	-webkit-border-bottom-right-radius: $radius
+	border-bottom-right-radius: $radius
+	-webkit-border-bottom-left-radius: $radius
+	border-bottom-left-radius: $radius
+	background-clip: padding-box
+
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
+
+@mixin transition($args...) 
+	-webkit-transition: $args
+	-moz-transition: $args
+	-ms-transition: $args
+	-o-transition: $args
+	transition: $args
+
+
+// Reset 
+body
+	font-family: 'Catamaran', sans-serif
+	font-weight: 400
+
+//buttons
+a
+	@include transition(.5s)
+
+.button
+	color: white
+	text-decoration: none
+	padding: 3px 11px
+	@include border-radius(50px)
+	font-weight: 600
+	font-size: 14px
+	&:hover	
+		text-decoration: none
+
+.left
+	float: left
+.icon
+	position: absolute
+	color: $verde-claro-color
+	left: -5px
+	top: -12px
+	font-size: 45px
+
+//advice
+.advice
+	position: fixed
+	left: 0
+	top: 0
+	z-index: 11
+	height: 80px
+	padding: 28px 0
+	width: 100%
+	text-align: center
+	background-color: $verde-claro-color
+	font-weight: 600
+	font-size: 16px
+	text-transform: uppercase
+	color: white
+	-webkit-animation: seconds 1.0s forwards
+	-webkit-animation-iteration-count: 1
+	-webkit-animation-delay: 2s
+	animation: seconds 1.0s forwards
+	animation-iteration-count: 1
+	animation-delay: 2s
+	
+	p 
+		padding: 0
+		margin: 0
+
++keyframes(seconds)
+	0%
+		opacity: 1  
+	100%
+		opacity: 0
+		left: -9999px

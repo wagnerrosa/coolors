@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: coolors
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
+    healthCheckPath: /up
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      # Render's CPU-derived default OOMs on the free 512MB instance.
+      - key: WEB_CONCURRENCY
+        value: 2
+      - key: RAILS_ENV
+        value: production

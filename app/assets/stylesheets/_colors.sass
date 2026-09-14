@@ -1,0 +1,202 @@
+@use "vars" as *
+
+body
+    color: $text-color
+
+.box-color, .show-page
+    /*border: 1px solid black*/
+    padding: 0 0 60px
+    text-align: center
+
+    .list
+        margin: 20px 0
+        list-style-type: none
+        padding: 0
+        .show, .likes, .share, .tweet
+            color: $cinza-color
+            font-weight: 600
+            &:hover
+                color: $rosa-color
+                text-decoration: none
+        .show
+            font-size: 16px
+            padding: 3px 10px
+            @include border-radius(5px)
+            &:hover
+                background-color: $rosa-color
+                color: white            
+        .likes, .share, .tweet        
+            .icon
+                font-size: 20px
+                position: relative
+                left: 0
+                top: 0
+                font-size: 18px
+                margin-top: 2px
+                color: $cinza-color
+            &:hover
+                .icon
+                    color: $rosa-color
+.box-color
+    .list
+        .likes
+            vertical-align: top
+            .icon
+                margin-right: 3px
+.show-page
+    padding: 0 !important
+    margin-top: 80px
+    .list
+        border-top: 1px solid $cinza-color
+        border-bottom: 1px solid $cinza-color
+        margin: 45px 0 60px
+        padding: 7px 0 0
+
+        li
+            display: inline-block
+            margin: 10px
+        .tweet, .share, .likes
+            font-size: 14px
+            vertical-align: top
+            padding: 3px 15px
+            color: white
+            opacity: 1
+            @include border-radius(5px)
+            &:hover
+                opacity: 0.7
+                color: white
+                .icon
+                    color: white
+            .icon
+                color: white
+                margin-right: 6px
+                &:hover
+                    color: white
+        .tweet
+            background-color: #1B95E0
+        .share
+            background-color: #3b5998
+        .likes
+            background-color: $rosa-color
+    span
+        margin-left: 10px
+        color: $cinza-color
+        font-weight: 600
+
+.admin-area
+    text-align: center
+    a
+        padding: 4px 15px
+        background-color: $verde-claro-color
+        color: $preto-color
+        font-size: 14px
+        font-weight: 600
+        margin: 0 2px
+        @include border-radius(5px)
+        &:hover
+            text-decoration: none
+            opacity: 0.8
+
+.menu-options
+    text-align: center
+    padding: 40px 0
+    ul
+        list-style-type: none
+        color: $cinza-color
+        font-size: 16px
+        font-weight: 500
+        padding: 0
+        margin: 0 0 20px
+        .active
+            font-weight: 600
+            color: $rosa-color
+        li
+            display: inline-block
+            &:last-child
+                &:before
+                    content: "|"
+            a
+                color: $cinza-color
+                &:hover
+                    color: $rosa-color
+                    text-decoration: none
+                    font-weight: 600
+
+
+
+
+// ---------------------------------------------------------------
+// Layout: replaces Bootstrap 4 alpha-2 (row / col-* / clearfix).
+// The 2016 grid was col-xs-12 col-sm-6 col-md-4 col-lg-3.
+// ---------------------------------------------------------------
+.container
+    max-width: 1140px
+    margin: 0 auto
+    padding: 0 15px
+
+#colors-wrapper
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+    gap: 20px
+
+    .show-page
+        grid-column: 1 / -1
+
+.menu-options, .admin-area
+    grid-column: 1 / -1
+
+.submenu
+    nav
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+
+        .instruction
+            margin-right: auto
+
+        form
+            display: inline-block
+            margin: 0
+
+footer
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
+
+    .lx
+        display: flex
+
+// Bootstrap's .btn / .form-control reset, kept minimal on purpose.
+.btn
+    cursor: pointer
+    font-family: inherit
+    border: none
+    background: none
+
+.btn-primary
+    display: block
+    width: 100%
+    padding: 10px
+    cursor: pointer
+
+.form-control
+    input[type="text"], input[type="email"], input[type="password"]
+        padding: 8px
+        border: 1px solid $cinza-color
+        @include border-radius(3px)
+        font-family: inherit
+        font-size: 16px
+
+// The vote button is a real form now (button_to), not a GET link.
+.list
+    li
+        form
+            display: inline-block
+            margin: 0
+        .likes
+            border: none
+            background: none
+            cursor: pointer
+            font-family: inherit
+            font-size: inherit

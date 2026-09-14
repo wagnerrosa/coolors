@@ -1,4 +1,5 @@
-class Color < ActiveRecord::Base
-	acts_as_voteable
-	validates :color1, presence: true
+class Color < ApplicationRecord
+  has_many :votes, dependent: :destroy
+
+  validates :color1, presence: true
 end

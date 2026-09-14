@@ -1,0 +1,43 @@
+@use "vars" as *
+
+.forms
+	margin: 0 auto
+	max-width: 400px
+	padding: 40px 5px
+	h2
+		text-align: center
+		margin-bottom: 15px
+		color: $cinza-color
+	.form-control
+		.field
+			margin: 10px 0
+			label
+				font-size: 18px
+				color: $cinza-color				
+			input
+				width: 100%
+				animation: header-animation 10s
+				-moz-animation: header-animation 10s infinite /* Firefox */
+				-webkit-animation: header-animation 10s infinite
+				color: #FFEEE4
+				opacity: 0.8
+			small
+				color: $cinza-color
+		.actions
+			margin-bottom: 10px
+			.btn-primary
+				animation: header-animation 10s
+				-moz-animation: header-animation 10s infinite /* Firefox */
+				-webkit-animation: header-animation 10s infinite
+				color: #FFEEE4
+				font-weight: 600
+				border: none	
+				&:hover
+					color: $verde-claro-color
+					border-color: $verde-color
+					background-color: $verde-color
+
+.forms
+	.new-color
+		.actions
+			margin: 20px 0 10px

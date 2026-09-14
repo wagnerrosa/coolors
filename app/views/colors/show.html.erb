@@ -1,35 +1,40 @@
-<div id="colors-wrapper" class="row">
-	<div id="color-id-showpage-<%= @color.id %>" class="col-sm-12 show-page" >
-		<button class="btn" data-clipboard-text="<%= @color.color1 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color1 %>"></i></button><span><%= @color.color1 %></span><br>
-		<button class="btn" data-clipboard-text="<%= @color.color2 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color2 %>"></i></button><span><%= @color.color2 %></span><br>
-		<button class="btn" data-clipboard-text="<%= @color.color3 %>" ><i class="ion-waterdrop color-drop" style="color: <%= @color.color3 %>"></i></button><span><%= @color.color3 %></span><br>
+<div id="colors-wrapper">
+  <div id="color-id-showpage-<%= @color.id %>" class="show-page">
+    <% [ @color.color1, @color.color2, @color.color3 ].each do |hex| %>
+      <button class="btn"
+              data-controller="clipboard"
+              data-clipboard-text-value="<%= hex %>"
+              data-action="clipboard#copy">
+        <i class="ion-waterdrop color-drop" style="color: <%= hex %>"></i>
+      </button><span><%= hex %></span><br>
+    <% end %>
 
-		<ul class="list">
-			<li>
-				<%= link_to vote_up_color_path(@color), class: "likes" do %>
-					<i class="icon ion-heart"></i> <%= @color.votes_for %>
-				<% end %>				
-			</li>
-			<li><a href="https://www.facebook.com/sharer.php?u=http://coolors.wagnerrosa.com/colors/<%= @color.id %>" class="share"><i class="icon ion-social-facebook"></i>Share</a></li>
-			<li><a href="https://twitter.com/intent/tweet?url=http://coolors.wagnerrosa.com/colors/<%= @color.id %>" class="tweet"><i class="icon ion-social-twitter"></i>Tweet</a></li>
-		</ul>		
-	</div>
+    <ul class="list">
+      <li>
+        <%= button_to vote_up_color_path(@color), class: "likes" do %>
+          <i class="icon ion-heart"></i> <%= @color.votes_count %>
+        <% end %>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=<%= CGI.escape(color_url(@color)) %>" class="share">
+          <i class="icon ion-social-facebook"></i>Share
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=<%= CGI.escape(color_url(@color)) %>" class="tweet">
+          <i class="icon ion-social-twitter"></i>Tweet
+        </a>
+      </li>
+    </ul>
+  </div>
 
-	<% if user_signed_in? %>
-		<% if current_user.admin? %>
-		<div class="admin-area clearfix">
-			<%= link_to "Edit", edit_color_path(@color) %>
-			<%= link_to "Delete", color_path(@color), method: :delete, data: { confirm: "Are you sure you want to delete this cool color?"} %>			
-		</div>
-		<% end %>
-	<% end %>
-</div>	
-<%= javascript_tag do %>
-	var clipboard = new Clipboard('.btn');
-	clipboard.on('success', function(e) {
-	console.log(e);
-	});
-	clipboard.on('error', function(e) {
-	console.log(e);
-	});
-<% end %>
+  <% if user_signed_in? && current_user.admin? %>
+    <div class="admin-area">
+      <%= link_to "Edit", edit_color_path(@color) %>
+      <%= link_to "Delete", color_path(@color), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure you want to delete this cool color?"
+          } %>
+    </div>
+  <% end %>
+</div>

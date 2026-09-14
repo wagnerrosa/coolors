@@ -1,0 +1,113 @@
+@use "vars" as *
+
+
+footer
+	margin-bottom: 20px
+	.button-footer
+		float: right
+		a
+			padding: 7px 13px 7px 37px
+			position: relative
+			border: 2px solid grey
+			@include border-radius(50px)
+			color: grey
+			margin: 33.5px 0
+			&:hover
+				text-decoration: none
+				background-color: grey
+				color: white
+				.icon
+					color: white
+			.icon
+				font-size: 29px
+				top: 0
+				left: 6px
+				color: grey
+
+.lx
+	float: left
+	max-width: 350px
+	svg
+		float: left
+		cursor: pointer
+		max-width: 121px
+		margin-right: 25px
+		&:hover
+			#bondinho
+				@include transition(.5s)
+				fill: #3D963D
+
+	.text-footer
+		margin-top: 35px
+		float: left
+		.iconico
+			color: #dc6b6b
+			margin: 0 5px
+			font-size: 16px
+		p
+			margin-bottom: 2px
+		span
+			font-size: 13px
+			color: #d3d5d4
+		a
+			font-weight: 700
+			cursor: pointer
+			color: #aaa
+			transition: 0.6s
+			&:hover
+				color: #dc6b6b						
+
+@media (max-width: 580px)
+	footer
+		.button-footer
+			float: none
+			a 
+				margin: 0 auto
+				width: 135.84px
+				display: block
+	.lx
+		float: none
+		display: block
+		margin: 0 auto
+
+
+@media (max-width: 578px) 
+
+	.lx
+		width: 100%
+		margin: 30px auto
+
+
+@media (max-width: 369px) 
+
+	.lx
+		svg
+			max-width: 115px
+			margin-right: 15px
+
+@media (max-width: 340px) 
+
+	.lx
+		svg
+			max-width: 105px
+			margin-right: 11px
+		.text-footer
+			margin-top: 23px
+			p
+				font-size: 11px
+				margin-bottom: 2px
+			span
+				font-size: 12px
+@media (max-width: 313px) 			
+
+	.lx
+		svg
+			max-width: 95px
+
+@media (max-width: 300px)
+
+	.lx
+		svg
+			max-width: 85px
+		.text-footer
+			margin-top: 10px	

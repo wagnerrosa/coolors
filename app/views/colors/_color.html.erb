@@ -1,0 +1,19 @@
+<div id="color-<%= color.id %>" class="box-color">
+  <% [ color.color1, color.color2, color.color3 ].each do |hex| %>
+    <button class="btn"
+            data-controller="clipboard"
+            data-clipboard-text-value="<%= hex %>"
+            data-action="clipboard#copy">
+      <i class="ion-waterdrop color-drop" style="color: <%= hex %>"></i>
+    </button><br>
+  <% end %>
+
+  <ul class="list">
+    <li>
+      <%= button_to vote_up_color_path(color), class: "likes" do %>
+        <i class="icon ion-heart"></i><%= color.votes_count %>
+      <% end %>
+    </li>
+    <li><%= link_to "Show Coolor", color, class: "show" %></li>
+  </ul>
+</div>

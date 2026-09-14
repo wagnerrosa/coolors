@@ -1,86 +1,82 @@
 class ColorsController < ApplicationController
-	before_action :find_color, only: [:show, :edit, :update, :destroy, :vote_up]
-	before_action :authenticate_user!, except: [:index, :show, :trend, :vote_up]
-	before_action :admin_user_logged?, only: [:edit, :update, :destroy]
-	before_action :voteup_time, only: [:vote_up]
+  before_action :find_color, only: [ :show, :edit, :update, :destroy, :vote_up ]
+  before_action :authenticate_user!, except: [ :index, :show, :trend, :vote_up ]
+  before_action :admin_user_logged?, only: [ :edit, :update, :destroy ]
 
-	def index
-		@colors = Color.all.order("created_at desc")		
-	end	
+  def index
+    @colors = Color.order(created_at: :desc)
+  end
 
-	def new
-		@color = Color.new
-	end
+  def trend
+    @colors = Color.order(votes_count: :desc, created_at: :desc)
+  end
 
-	def create
-		@color = Color.new color_params
+  def show
+  end
 
-		if @color.save
-			redirect_to @color, notice: "Nice Cool Color! It was successfully created"
-		else
-			render 'new', notice: "Oh no! Could you try again?"
-		end
+  def new
+    @color = Color.new
+  end
 
-	end
+  def create
+    @color = Color.new color_params
 
-	def show
-	end
+    if @color.save
+      redirect_to @color, notice: "Nice Cool Color! It was successfully created"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
-	def edit
-	end
+  def edit
+  end
 
-	def update
-		if @color.update color_params
-			redirect_to @color, notice: "Yeah! Updated!"
-		else		
-			render 'edit'
-		end
-	end
+  def update
+    if @color.update color_params
+      redirect_to @color, notice: "Yeah! Updated!"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
-	def destroy
-		@color.destroy
-		redirect_to colors_path, notice: "Color deleted... You're right, that wasn't so cool!"
-	end
+  def destroy
+    @color.destroy
+    redirect_to colors_path, notice: "Color deleted... You're right, that wasn't so cool!"
+  end
 
-	def vote_up
-		@current_user = User.first
-		if @color.update_attributes(:updated_at => DateTime.now)
-			begin
-				current_user.vote_for(@color)
-				redirect_to :back, notice: "Thanks for voting"
-			rescue ActionController::RedirectBackError
-				redirect_to root_path
-			end			
-		end
-	end
+  # Anonymous voting: one vote per visitor per color, enforced by a unique
+  # index on [color_id, voter_key]. The 2016 version called current_user.vote_for
+  # here while allowing logged-out access, so it always raised NoMethodError.
+  def vote_up
+    @color.votes.create!(voter_key: voter_key)
+    redirect_back fallback_location: root_path, notice: "Thanks for voting"
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique
+    redirect_back fallback_location: root_path, alert: "You already voted!"
+  end
 
-	def trend
-		@colors = Color.plusminus_tally.order('plusminus_tally DESC')	
-	end	
+  private
 
-	private
+  def color_params
+    params.require(:color).permit(:color1, :color2, :color3)
+  end
 
-	def color_params
-		params.require(:color).permit(:color1, :color2, :color3)
-	end
+  def find_color
+    @color = Color.find(params[:id])
+  end
 
-	def find_color
-		@color = Color.find(params[:id])		
-	end
+  def admin_user_logged?
+    redirect_to(root_path) unless current_user&.admin?
+  end
 
-	def admin_user_logged?
-		if current_user.admin?
-		else
-			redirect_to root_path
-		end
-	end
+  # Signed cookie for anonymous visitors; stable id once signed in.
+  def voter_key
+    return "user:#{current_user.id}" if user_signed_in?
 
-	def voteup_time
-		old_date = @color.updated_at_was
-		if old_date > (DateTime.now - 1.minutes)
-			redirect_to :back, notice: "You already voted!"
-		end
-		rescue ActionController::RedirectBackError
-  		redirect_to root_path		
-	end
+    cookies.signed[:voter_key] ||= {
+      value: SecureRandom.uuid,
+      expires: 1.year.from_now,
+      httponly: true
+    }
+    cookies.signed[:voter_key]
+  end
 end

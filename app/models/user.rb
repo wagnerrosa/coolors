@@ -1,12 +1,5 @@
-class User < ActiveRecord::Base
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
-	# Removed User sign up...
-	# devise :database_authenticatable, :registerable,
-	#      :recoverable, :rememberable, :trackable, :validatable
-
-	devise :database_authenticatable, 
-			:rememberable, :trackable, :validatable
-
-	acts_as_voter
+class User < ApplicationRecord
+  # Registration and recovery stay off by design: this app has exactly one
+  # admin account, seeded from ENV. (2016: "just me to manage the trolls")
+  devise :database_authenticatable, :rememberable, :trackable, :validatable
 end

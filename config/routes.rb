@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'colors/index'
-  get 'colors/trend'
 
   resources :colors do
-  	member do
-  		get :vote_up
-  	end
+    member do
+      post :vote_up
+    end
+    collection do
+      get :trend
+    end
   end
 
-  root 'colors#index'
+  # Render health check
+  get "up" => "rails/health#show", as: :rails_health_check
 
-  get '*path' => redirect('/') #redirect to home other pages
+  root "colors#index"
 end
