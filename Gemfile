@@ -60,7 +60,10 @@ end
 
 gem "devise", "~> 5.0"
 
-gem "dotenv-rails", "~> 3.2", groups: [:development, :test]
+# Development only: in :test it would inject DATABASE_URL during boot, which
+# outranks the test: entry in database.yml and points the suite at the Neon
+# database serving the live site.
+gem "dotenv-rails", "~> 3.2", groups: [:development]
 
 # json 3.0 removed the second argument from JSON.parse, which
 # ActiveSupport::JSON.decode still passes — every request that reads an
