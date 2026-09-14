@@ -111,3 +111,39 @@ PgBouncer 1.22, and Neon's pooler supports protocol-level prepared statements.
 
 Migrations and seeds run in `bin/render-build.sh` because `preDeployCommand` is paid-only and
 the free plan has no shell access (no `rails console`).
+
+## Secrets — where they live
+
+**Nothing secret belongs in this file.** It is versioned and public on GitHub. The 2016 repo
+leaked the admin password through the README and the login form, and committed a dev/test
+`secret_key_base` in `config/secrets.yml`; that is the mistake this section exists to prevent.
+
+| Secret | Where it lives |
+|---|---|
+| `RAILS_MASTER_KEY` | `config/master.key`, gitignored via `/config/*.key`. Backed up outside the repo at `../coolors-backup-2016/MASTER_KEY_coolors.txt`. Without it `credentials.yml.enc` cannot be decrypted. |
+| `ADMIN_PASSWORD` | Render dashboard only. Must be a **new** password — the 2016 one is in public git history forever. |
+| `ADMIN_EMAIL` | Render dashboard. |
+| `DATABASE_URL` | Render dashboard. Neon direct (non-pooler) endpoint, with `?sslmode=require`. |
+
+Neon project id: `royal-bar-84649667`. The `neon` CLI is installed globally; `neon auth` needs an
+interactive browser and times out after 60 seconds in a non-interactive shell.
+
+## Port status (2026-09-14)
+
+The Rails 8 port is commit `91eb075`, sitting on top of the 49 commits from 2016 (`6f0d8d8` is
+the last 2016 commit, `75bb851` the initial one). Same repository, same `master` branch, same
+remote — the history is continuous, and the Sass files registered as renames rather than
+rewrites.
+
+The pre-port 2016 working tree is preserved at `../coolors-backup-2016/`.
+
+Verified so far: Dart Sass compiles the six 2016 stylesheets (10.4KB output, both keyframe
+animations present), the app boots on Rails 8.1.3.1, all ported Ruby passes `ruby -c`, and the
+routes are correct (`vote_up` is POST, `trend_colors` is GET, no catch-all).
+
+**Not yet verified — needs a database.** No PostgreSQL runs locally and there is no Docker, so
+migrations, seeds, voting, and the trend ordering have never been executed. Run the plan's
+verification steps once `DATABASE_URL` points at Neon.
+
+**Not yet done:** the working directory is still `coolors-new/` and needs renaming to `coolors/`,
+and commit `91eb075` has not been pushed.
