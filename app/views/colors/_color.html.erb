@@ -10,7 +10,7 @@
 
   <ul class="list">
     <li>
-      <%= button_to vote_up_color_path(color), class: "likes" do %>
+      <%= button_to vote_up_color_path(color), {}, class: "likes" do %>
         <i class="icon ion-heart"></i><%= color.votes_count %>
       <% end %>
     </li>
