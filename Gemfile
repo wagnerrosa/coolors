@@ -68,4 +68,4 @@ gem "dotenv-rails", "~> 3.2", groups: [:development]
 # json 3.0 removed the second argument from JSON.parse, which
 # ActiveSupport::JSON.decode still passes — every request that reads an
 # encrypted session cookie raises ArgumentError on Rails 8.1.3.1.
-gem "json", "~> 2.7"
+gem "json", "~> 3.0"
