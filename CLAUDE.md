@@ -12,6 +12,11 @@ remaining 43 are `+0200`, which is Portugal's DST shift on 2016-05-01.
 
 The git history from 2016 is preserved in this repository; the Rails 8 port sits on top of it.
 
+The 2016 app is reachable by name as well as by hash: branch `rails-4-2016` and tag
+`v2016-final` both point at `6f0d8d8`, the last commit before the port — Rails 4.2.5 on
+Ruby 2.2.3, with the vendored Bootstrap alpha still in place. Nothing depends on them; they
+exist so that state can be checked out without hunting for a hash.
+
 ## Why the rewrite
 
 The 2016 Gemfile pinned Ruby 2.2.3. No current PaaS offers it (Heroku's oldest runtime is 3.1.0,
