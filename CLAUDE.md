@@ -165,5 +165,16 @@ It needs a local PostgreSQL, which is deliberate: `dotenv` is development-only s
 neon.tech. Without a local server the suite fails to connect — which is the intended failure,
 because the alternative is writing to the database that serves the live site.
 
-**Not yet done:** the working directory is still `coolors-new/` and needs renaming to `coolors/`,
-and nothing has been pushed — `master` is 7 commits ahead of `origin`.
+**Done:** the app lives at `Projetos/coolors/` (the 2016 tree it replaced is backed up at
+`../coolors-backup-2016/`), and `master`, `rails-4-2016` and `v2016-final` are all pushed.
+`master` is at `2ef044c` and in sync with `origin`.
+
+**Remaining:** create the Render service and set its env vars. The site is not live yet.
+
+## Dependabot
+
+`.github/dependabot.yml` and `.github/workflows/ci.yml` came from the Rails 8 scaffold in
+`91eb075` — they were not in the 2016 repo, and GitHub opened four `dependabot/*` branches
+off them. One of those, `dependabot/bundler/json-3.0.2`, proposes exactly the upgrade that
+breaks every POST (see the json note above), so the config now ignores `json >= 3.0`.
+Close that PR rather than merging it.

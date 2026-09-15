@@ -1,10 +1,22 @@
 # Coolors
 
-A gallery of three-colour palettes with click-to-copy hex values and heart voting.
+**A 2016 project, still running.** Built in Lisbon over three weeks in April and May 2016,
+while I was learning Rails — 49 commits between 26 April and 14 May, the first of them
+`75bb851`, dated 2016-04-26. It lived on Heroku at `coolors.wagnerrosa.com` until the dyno
+was removed.
 
-Originally built in Lisbon, April–May 2016, while I was learning Rails — 49 commits between
-26 April and 14 May. It ran on Heroku at `coolors.wagnerrosa.com` until the dyno was removed.
-This is the same app, revived on a current stack, with the 2016 design kept intact.
+In 2026 I brought it back. The history in this repository is continuous: the same 49 commits
+from 2016, with the revival sitting on top of them. Nothing was squashed or rewritten.
+
+> **Looking for the original?** `git checkout v2016-final` — or browse the
+> [`rails-4-2016`](../../tree/rails-4-2016) branch. That is the app exactly as it ran on
+> Heroku: Rails 4.2.5 on Ruby 2.2.3, jQuery, CoffeeScript, and a vendored copy of
+> Bootstrap 4.0.0-**alpha**-2. It will not boot on a modern Ruby, which is the whole story
+> below.
+
+A gallery of three-colour palettes with click-to-copy hex values and heart voting.
+Same design as 2016, down to the colour-cycling header animation and the Lisbon tram in
+the footer.
 
 ## Why it was rewritten rather than redeployed
 

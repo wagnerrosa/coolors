@@ -5,6 +5,13 @@ updates:
   schedule:
     interval: weekly
   open-pull-requests-limit: 10
+  ignore:
+    # json 3.0 dropped the second argument from JSON.parse, which
+    # ActiveSupport::JSON.decode still passes on Rails 8.1: every request that
+    # reads an encrypted session cookie 500s, so all POSTs fail. Pinned to 2.x
+    # on purpose — do not let this be bumped back.
+    - dependency-name: json
+      versions: [">= 3.0"]
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
