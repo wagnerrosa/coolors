@@ -117,6 +117,17 @@ PgBouncer 1.22, and Neon's pooler supports protocol-level prepared statements.
 Migrations and seeds run in `bin/render-build.sh` because `preDeployCommand` is paid-only and
 the free plan has no shell access (no `rails console`).
 
+Live since 2026-09-29 at https://coolors.wagnerrosa.com — Render service `coolors-hk2f`, reached
+through a `CNAME coolors → coolors-hk2f.onrender.com.` on the `wagnerrosa.com` zone. That record
+used to point at `coolorsonrails.herokuapp.com`, the 2016 Heroku app, which no longer exists; a
+CNAME left dangling there is a subdomain-takeover risk. Render issues and renews the TLS
+certificate. `config.hosts` is unset, so no host allowlist needs updating if the domain changes.
+
+Neon's free plan archives an idle branch to cold storage: `production` was archived on
+2026-09-28 after ~13 days without a connection, and unarchived itself on the next connect. No
+data is lost, but the first request after a long idle spell pays for the unarchive on top of
+Render's own free-tier cold start.
+
 ## Secrets — where they live
 
 **Nothing secret belongs in this file.** It is versioned and public on GitHub. The 2016 repo
@@ -167,9 +178,7 @@ because the alternative is writing to the database that serves the live site.
 
 **Done:** the app lives at `Projetos/coolors/` (the 2016 tree it replaced is backed up at
 `../coolors-backup-2016/`), and `master`, `rails-4-2016` and `v2016-final` are all pushed.
-`master` is at `2ef044c` and in sync with `origin`.
-
-**Remaining:** create the Render service and set its env vars. The site is not live yet.
+The Render service is created and the site is live (see Deployment).
 
 ## Dependabot
 
